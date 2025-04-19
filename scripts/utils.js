@@ -20,15 +20,22 @@ export const handleResize = () => {
     const width = window.innerWidth;
     
     if(width > 767) {
-        const headerOne = document.querySelector('.headerOne').firstElementChild;
-        const headerDiv = document.querySelector('.headerDiv');
-        headerDiv.classList.remove('hidden');
-        headerOne.classList.add('hidden');
+        const headerOne = document.querySelector('.headerOne');
+        if(headerOne) {
+            const headerOneBtn = document.querySelector('.headerOne').firstElementChild;
+            const headerDiv = document.querySelector('.headerDiv');
+            headerDiv.classList.remove('hidden');
+            headerOneBtn.classList.add('hidden');
+        }
+        
     }
     if(width < 768) {
-        const headerOne = document.querySelector('.headerOne').firstElementChild;
-        const headerDiv = document.querySelector('.headerDiv');
-        headerOne.classList.remove('hidden');
-        headerDiv.classList.add('hidden');
+        const headerOne = document.querySelector('.headerOne');
+        if(headerOne) {
+            const headerOneBtn = document.querySelector('.headerOne').firstElementChild;
+            const headerDiv = document.querySelector('.headerDiv');
+            headerOneBtn.classList.remove('hidden');
+            headerDiv.classList.add('hidden');
+    }
     }
 }
