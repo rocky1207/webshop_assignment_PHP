@@ -7,7 +7,10 @@ export const headerTwoCode = `
             <nav>
                 <ul>
                     <li>
-                        <a href="">About us</a>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/">Welcome</a>
+                    </li>
+                    <li>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php">About us</a>
                     </li>
                     <li>
                         <a href="">Product list</a>
@@ -39,7 +42,10 @@ export const headerTwoCode = `
             <nav>
                 <ul>
                     <li>
-                        <a href="">About us</a>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/">Welcome</a>
+                    </li>
+                    <li>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php">About us</a>
                     </li>
                     <li>
                         <a href="">Product list</a>
