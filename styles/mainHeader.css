@@ -1,3 +1,48 @@
+.headerOne {
+    width: 100%;
+    margin: 0 auto 60px auto;
+    
+    padding: 50px 0 0;
+}
+.containerLg button {
+    all: unset;
+}
+.headerDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerOne div p {
+    font-size: 40px;
+}
+.headerOne nav {
+    width: 450px;
+}
+.headerOne nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+}
+.headerOne nav ul li {
+    width: 25%;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.headerOne nav ul a {
+    width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.headerOne nav ul li a:hover {
+    cursor: pointer;
+    background-color: red;
+    
+}
+
+/* headerTwo section */
 .headerTwo {
     position: relative;
     background: #b5b5b5;
@@ -44,14 +89,16 @@
     position: absolute;
     top: 30px;
     right: 20px;
+    transition: color .3s ease-in-out;
 }
 .eks button {
     all: unset;
     font-size: 30px;
 }
-.eks:hover {
+.eks:hover,
+.eks:active {
     cursor: pointer;
-    color: red;
+    color: var(--hover-color-one);
 }
 
 
