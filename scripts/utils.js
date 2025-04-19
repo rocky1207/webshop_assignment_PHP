@@ -20,14 +20,18 @@ export const handleResize = () => {
     const width = window.innerWidth;
     
     if(width > 767) {
+        
         const headerOne = document.querySelector('.headerOne');
+        const headerTwo = document.querySelector('.headerTwo');
         if(headerOne) {
             const headerOneBtn = document.querySelector('.headerOne').firstElementChild;
             const headerDiv = document.querySelector('.headerDiv');
             headerDiv.classList.remove('hidden');
             headerOneBtn.classList.add('hidden');
+        } 
+        if(headerTwo) {
+            addNewHeader(headerOneCode);
         }
-        
     }
     if(width < 768) {
         const headerOne = document.querySelector('.headerOne');
