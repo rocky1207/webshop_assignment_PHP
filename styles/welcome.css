@@ -1,0 +1,50 @@
+.headerOne {
+    width: 100%;
+    margin: 0 auto 60px auto;
+    
+    padding: 50px 0 0;
+}
+.containerLg button {
+    all: unset;
+}
+.headerDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerOne div p {
+    font-size: 40px;
+}
+.headerOne nav {
+    width: 400px;
+    
+}
+.headerOne nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+}
+.headerOne nav ul li {
+    width: 33%;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.headerOne nav ul a {
+    width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.headerOne nav ul li a:hover {
+    cursor: pointer;
+    background-color: red;
+    
+}
+main {
+    text-align: center;
+}
+
+
+

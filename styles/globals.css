@@ -1,0 +1,41 @@
+:root {
+    --hover-color-one: #5b5b5b;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.containerLg {
+    width: 80%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.nav-link.active {
+    text-decoration: underline;
+}
+
+.menuIcon {
+    width: 34px;
+    height: 34px;
+    fill: none;
+    stroke: #000;
+    stroke-width: 2px;
+    stroke-linecap: "round";
+    transition: stroke 0.3s ease;
+}
+.menuIcon:hover,
+.menuIcon:active {
+    stroke: var(--hover-color-one);
+    cursor: pointer;
+}
+.hidden {
+    display: none;
+}
+
