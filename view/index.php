@@ -14,8 +14,8 @@
     <main>
         <h1>WELCOME!</h1>
         <div>
-            <p>This is just Welcome page. If You are here, it means You are already logged in.</p>
-            <p>Thanks!</p>
+            <p>This is just Welcome page.</p>
+            <p>Enjoy!</p>
         </div>
     </main>
     

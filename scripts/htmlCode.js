@@ -1,30 +1,36 @@
+const isLoggedIn = document.querySelector('header').dataset.loggedIn;
+
+const getNavLinks = (loggedIn) => {
+    let links = [
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/', label: 'Welcome'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php', label: 'About us'},
+        {href: '', label: 'Product list'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/logIn.php', label: 'Log In'}
+    ];
+
+    if(loggedIn) {
+        links = links.filter(li => li.label !== 'Log In'); 
+        links.push({href: '', label: 'Add product'},{href: '', label: 'Log Out'});
+    }
+    return links.map(liEl => `<li><a href='${liEl.href}'>${liEl.label}</a></li>`).join('');
+}
 export const headerTwoCode = `
-        <header class="headerTwo">
-        <div class="eks">
-            <button type="button" class="closeMenuBtn">X</button>
-        </div>
-        <div class="containerSmall">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/">Welcome</a>
-                    </li>
-                    <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php">About us</a>
-                    </li>
-                    <li>
-                        <a href="">Product list</a>
-                    </li>
-                    <li>
-                        <a href="">Add product</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        </header>
-    `;
-    
-    export const headerOneCode = `
+<header class="headerTwo">
+<div class="eks">
+    <button type="button" class="closeMenuBtn">X</button>
+</div>
+<div class="containerSmall">
+    <nav>
+        <ul>
+            ${getNavLinks(isLoggedIn)}
+        </ul>
+    </nav>
+</div>
+</header>
+`;
+
+
+export const headerOneCode = `
     <header class="headerOne">
         <div class="containerLg">
             <button type="button" id="menuBtn">
@@ -41,18 +47,7 @@ export const headerTwoCode = `
             </div>
             <nav>
                 <ul>
-                    <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/">Welcome</a>
-                    </li>
-                    <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php">About us</a>
-                    </li>
-                    <li>
-                        <a href="">Product list</a>
-                    </li>
-                    <li>
-                        <a href="">Add product</a>
-                    </li>
+                    ${getNavLinks(isLoggedIn)}
                 </ul>
             </nav>
         </div>
