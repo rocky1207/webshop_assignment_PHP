@@ -19,7 +19,7 @@ export const addNewHeader = (elements) => {
 export const handleResize = () => {
     const width = window.innerWidth;
     
-    if(width > 767) {
+    if(width > 1025) {
         
         const headerOne = document.querySelector('.headerOne');
         const headerTwo = document.querySelector('.headerTwo');
@@ -33,7 +33,7 @@ export const handleResize = () => {
             addNewHeader(headerOneCode);
         }
     }
-    if(width < 768) {
+    if(width < 1024) {
         const headerOne = document.querySelector('.headerOne');
         if(headerOne) {
             const headerOneBtn = document.querySelector('.headerOne').firstElementChild;
