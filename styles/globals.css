@@ -11,7 +11,11 @@
 body {
     font-family: 'Inter', sans-serif;
 }
-main {
+h1 {
+    max-width: 90%;
+    margin: 0 auto 40px auto;
+}
+.textCenter {
     text-align: center;
 }
 .containerLg {

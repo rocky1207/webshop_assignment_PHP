@@ -2,10 +2,14 @@ const isLoggedIn = document.querySelector('header').dataset.loggedIn;
 
 const getNavLinks = (loggedIn) => {
     let links = [
-        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/', label: 'Welcome'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/', label: 'Welcome'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=aboutUs', label: 'About us'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products', label: 'Product list'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logIn', label: 'Log In'}
+       /* {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/', label: 'Welcome'},
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php', label: 'About us'},
-        {href: '', label: 'Product list'},
-        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/logIn.php', label: 'Log In'}
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/products.php', label: 'Product list'},
+        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/logIn.php', label: 'Log In'}*/
     ];
 
     if(loggedIn) {
@@ -51,12 +55,5 @@ export const headerOneCode = `
                 </ul>
             </nav>
         </div>
-    </header>
-    <main>
-        <h1>WELCOME!</h1>
-        <div>
-            <p>This is just Welcome page. If You are here, it means You are already logged in.</p>
-            <p>Thanks!</p>
-        </div>
-    </main>
+    </header>    
 `;

@@ -1,17 +1,22 @@
 import { headerOneCode, headerTwoCode } from "./htmlCode.js";
 
 export const addNewHeader = (elements) => {
+    const oldHeader = document.querySelector('header');
+    if (oldHeader) {
+        oldHeader.remove();
+    }
+
     const body = document.querySelector('body');
-    body.innerHTML = '';
-    body.innerHTML = elements;
-    
+    body.insertAdjacentHTML('afterbegin', elements);
+
     const menuBtn = document.querySelector('#menuBtn');
     const closeMenuBtn = document.querySelector('.closeMenuBtn');
-    if(closeMenuBtn) {
+
+    if (closeMenuBtn) {
         closeMenuBtn.addEventListener('click', addNewHeader.bind(null, headerOneCode));
     }
 
-    if(menuBtn) {
+    if (menuBtn) {
         menuBtn.addEventListener('click', addNewHeader.bind(null, headerTwoCode));
     }
 }
