@@ -27,20 +27,9 @@
 .headerOne nav ul li {
     width: 25%;
     padding: 5px;
-    margin: 0 auto;
-}
-
-.headerOne nav ul a {
-    width: 100%;
-    text-decoration: none;
-    display: inline-block;
     text-align: center;
 }
-.headerOne nav ul li a:hover {
-    cursor: pointer;
-    background-color: red;
-    
-}
+
 
 /* headerTwo section */
 .headerTwo {
@@ -63,28 +52,7 @@
     text-align: center;
     
 }
-.headerTwo nav ul li a {
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    
-}
-.headerTwo nav ul li a::after {
-    content: '';
-    background: red;
-    height: 1px;
-    width: 0%;
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    display: inline-block;
-    margin-top: 3px;
-    transition: width .3s ease-in-out;
-}
-.headerTwo nav ul li a:hover::after{
-    width: 100%;
-    
-}
+
 .eks {
     position: absolute;
     top: 30px;
@@ -102,3 +70,30 @@
 }
 
 
+header nav ul a {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    color: black;
+    transition: color .3s ease-in-out;
+}
+header nav ul li a:hover,
+header nav ul li a:active {
+    cursor: pointer;
+    color: var(--hover-color-one);
+}
+
+header nav ul li a::after {
+    content: '';
+    background: black !important;
+    height: 1px;
+    width: 0;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: width .3s ease-in-out;
+}
+header nav ul li a:hover::after,
+header nav ul li a:active::after {
+    width: 100%;
+}
