@@ -1,7 +1,7 @@
 <?php 
-session_start();
+
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
-var_dump($isLoggedIn);
+
 ?>
 <header data-logged-in="<?php echo $isLoggedIn ?>" class="headerOne">
         <div class="containerLg">
@@ -19,17 +19,17 @@ var_dump($isLoggedIn);
             </div>
             <nav>
                 <ul>
+                    
                     <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/">Welcome</a>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/">Welcome</a>
                     </li>
                     <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php">About us</a>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=aboutUs">About us</a>
                     </li>
                     <li>
-                        <a href="">Product list</a>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products">Product list</a>
                     </li>
                     <?php if($isLoggedIn):?>
-                    
                     <li>
                         <a href="">Add product</a>
                     </li>

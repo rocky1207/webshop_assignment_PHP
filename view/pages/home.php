@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="../styles/mainHeader.css">
-    <link rel="stylesheet" href="../styles/globals.css">
+    <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/mainHeader.css">
+    <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/globals.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="../scripts/app.js" defer type="module"></script>
+    <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
 </head>
 <body>
-    <?php include './components/mainHeader.php'; ?>
-    <main>
-        <h1>WELCOME!</h1>
+<?php include __DIR__ . '/../components/mainHeader.php'; ?>
+    <main class='textCenter'>
+        <h1>Welcome</h1>
         <div>
             <p>This is just Welcome page.</p>
             <p>Enjoy!</p>
