@@ -1,8 +1,9 @@
 <?php
 session_start();
+
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-$page = $_GET['page'] ?? 'home';
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
+$page = $_GET['page'] ?? 'home';
 
 if($requestMethod === 'POST') {
     
@@ -26,6 +27,11 @@ if($requestMethod === 'GET') {
             break;
         case 'logIn':
             require './view/pages/logIn.php';
+            break;
+        case 'logOut':
+            require_once "./controllers/LogOutController.php";
+            $logOutController = new LogOutController();
+            $logOutController->logOut();
             break;
         case 'register':
             require './view/pages/register.php';

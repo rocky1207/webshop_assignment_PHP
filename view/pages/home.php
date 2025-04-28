@@ -1,5 +1,5 @@
 <?php
-
+$isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 $message = $_SESSION['errorMsg'] ?? [];
 var_dump($message);
 
@@ -24,6 +24,9 @@ unset($_SESSION['errorMsg']);
         <h1>Welcome</h1>
         <div>
             <p>This is just Welcome page.</p>
+            <?php if(!$isLoggedIn): ?>
+                <p>Log in to manage products.</p>
+            <?php endif ?>
             <p>Enjoy!</p>
         </div>
     </main>
