@@ -1,26 +1,27 @@
 <?php
-require(__DIR__ . '/../models/productsModel.php');
+require(__DIR__ . '/../models/ProductsModel.php');
+require_once(__DIR__ . '/AppController.php');
 class ProductsController {
     private $productsModel;
 
     function __construct() {
-        $this->productsModel = new ProductsModel();
-        $baseConnectionErrMsg = $this->productsModel->conenct();
-        if($baseConnectionErrMsg) {
-            $this->errorMessage($baseConnectionErrMsg);
+         try {
+            DatabaseModel::connect();
+            $this->products();
+        } catch (Exception $e) {
+             AppController::createMessage($e->getMessage(), "page=home");
         }
-        $this->products();
     }
 
     function products() {
-        $_SESSION['products'] = $this->productsModel->getAllProducts();
+        $this->productsModel = new ProductsModel();
+        $products = $this->productsModel->getAllProducts();
+        if(is_string($products)) {
+            AppController::createMessage($products, "page=products");
+        } else {
+            $_SESSION['products'] = $products;
+        }
     }
-    function errorMessage($errorMsg) {
-       $_SESSION['errorMsg'] = $errorMsg;
-       var_dump($_SESSION['errorMsg']);
-       exit();
-    }
-    
 }
 
 new ProductsController();
