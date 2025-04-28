@@ -4,7 +4,6 @@ const getNavLinks = (loggedIn) => {
     let links = [
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/', label: 'Welcome'},
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=aboutUs', label: 'About us'},
-        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products', label: 'Product list'},
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logIn', label: 'Log In'}
        /* {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/', label: 'Welcome'},
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php', label: 'About us'},
@@ -14,7 +13,7 @@ const getNavLinks = (loggedIn) => {
 
     if(loggedIn) {
         links = links.filter(li => li.label !== 'Log In'); 
-        links.push({href: '', label: 'Add product'},{href: '', label: 'Log Out'});
+        links.push({href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products', label: 'Product list'},{href: '', label: 'Add product'},{href: '', label: 'Log Out'});
     }
     return links.map(liEl => `<li><a href='${liEl.href}'>${liEl.label}</a></li>`).join('');
 }

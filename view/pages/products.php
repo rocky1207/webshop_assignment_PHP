@@ -1,8 +1,6 @@
 <?php 
-
-$products = $_SESSION['products'] ?? '';
-
-
+$products = $_SESSION['products'] ?? [];
+unset($_SESSION['products']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

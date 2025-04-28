@@ -1,3 +1,11 @@
+<?php
+
+$message = $_SESSION['errorMsg'] ?? [];
+var_dump($message);
+
+unset($_SESSION['errorMsg']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +18,7 @@
     <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
 </head>
 <body>
+
 <?php include __DIR__ . '/../components/mainHeader.php'; ?>
     <main class='textCenter'>
         <h1>Welcome</h1>

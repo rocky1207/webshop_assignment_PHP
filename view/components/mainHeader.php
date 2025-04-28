@@ -2,8 +2,15 @@
 
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
 
+
 ?>
 <header data-logged-in="<?php echo $isLoggedIn ?>" class="headerOne">
+<?php 
+
+
+var_dump($isLoggedIn);
+
+?>
         <div class="containerLg">
             <button type="button" id="menuBtn">
             <svg class="menuIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -26,10 +33,11 @@ $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
                     <li>
                         <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=aboutUs">About us</a>
                     </li>
+                    <?php if($isLoggedIn):?>
                     <li>
                         <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products">Product list</a>
                     </li>
-                    <?php if($isLoggedIn):?>
+                    
                     <li>
                         <a href="">Add product</a>
                     </li>
@@ -39,7 +47,7 @@ $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
                     <?php endif?>
                     <?php if(!$isLoggedIn):?>
                     <li>
-                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/logIn.php">Log In</a>
+                        <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logIn">Log In</a>
                     </li>
                     <?php endif?>
                 </ul>

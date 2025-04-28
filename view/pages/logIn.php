@@ -1,3 +1,8 @@
+<?php
+    $msg = $_SESSION['errorMsg'] ?? [];
+    var_dump($msg);
+    unset($_SESSION['errorMsg']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +14,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <div class="containerLg formWrappDiv">
-    <form action="" class="loginForm">
+    <form method="POST" action="?page=logIn" class="loginForm">
         <div>
-            <input type="text" placeholder="Email">
+            <input type="text" placeholder="Email" name="email">
         </div>
         <div>
-            <input type="text" placeholder="Password">
+            <input type="text" placeholder="Password" name="password">
+        </div>
+        <div>
+            <button type="submit">Send</button>
         </div>
     </form>
     <p>You don't have an account? <a href="./register.php">Register</a></p>
