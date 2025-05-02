@@ -1,6 +1,10 @@
 <?php 
 $products = $_SESSION['products'] ?? [];
+
+var_dump($_SESSION["user"] ?? []);
+
 unset($_SESSION['products']);
+unset($_SESSION['user']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

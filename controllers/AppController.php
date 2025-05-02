@@ -8,6 +8,7 @@ class AppController {
     public const WRONG_PASSWORD_MESSAGE = 'Pogrešna lozinka.';
     public const QUERY_ERROR_MESSAGE =  'Greška prilikom izvršenja upita';
     public const NO_PRODUCTS_MESSAGE =  'Nema rezultata za navedeni upit';
+    public const EMAIL_EXISTS_MESSAGE =  'Email već postoji. Unesite drugi.';
 
     public static function databaseConnect() {
         try {
@@ -16,20 +17,26 @@ class AppController {
             throw new Exception($e->getMessage());
         }
     }
-    public static function createMessage($errorMsg, $page) {
-        $_SESSION['errorMsg'] = $errorMsg;
+    public static function createMessage($message, $page) {
+        $_SESSION['message'] = $message;
         Header("Location: ?{$page}", true, 303);
         exit();
     }
-    public static function validateInputs($inputs, $regex, $messages) {
+    public static function validateInputs($inputs, $regex, $messages, $page) {
         $data = [];
         foreach($inputs as $key => $input) {
             ${$key} = isset($input) ? trim($input) : '';
-            !preg_match($regex[$key], ${$key}) && self::createMessage($messages[$key], "page=home");
+            !preg_match($regex[$key], ${$key}) && self::createMessage($messages[$key], $page);
             $data[$key] = ${$key};
         }
         
         return $data;
+    }
+
+    public static function isPasswordEqual($data) {
+        $data["password"] !== $data["confirmPassword"] && self::createMessage("Lozinka i njena potvrda moraju biti identične", "page=register");
+        $data["password"] === $data["confirmPassword"] && $newData = ["email" => $data["email"], "password" => $data["password"]];
+        return $newData;
     }
 }
 

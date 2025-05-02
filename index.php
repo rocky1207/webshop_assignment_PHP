@@ -12,7 +12,11 @@ if($requestMethod === 'POST') {
             require_once "./controllers/LogInController.php";
             $logInController = new LogInController();
             $logInController->login();
-            
+            break;
+        case 'register':
+            require_once "./controllers/RegisterController.php";
+            $registerController = new RegisterController();
+            $registerController->register();
             break;
     }
 }

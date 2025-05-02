@@ -8,6 +8,7 @@ class ProductsModel  {
             "errorMsgOne" => AppController::NO_PRODUCTS_MESSAGE,
             "erroreMsgThree" => AppController::QUERY_ERROR_MESSAGE
         ];
+        
         return DatabaseModel::queryExec($execData);
     }
 }

@@ -1,7 +1,7 @@
 <?php
-    $msg = $_SESSION['errorMsg'] ?? [];
-    var_dump($msg);
-    unset($_SESSION['errorMsg']);
+    $message = $_SESSION['message'] ?? '';
+    
+    unset($_SESSION['message']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +26,12 @@
         <div>
             <button type="submit">Send</button>
         </div>
+        <?php if($message): ?>
+            <p><?= $message ?></p>
+        <?php endif ?>
     </form>
-    <p>You don't have an account? <a href="./register.php">Register</a></p>
+    <p>You don't have an account? <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=register">Register</a></p>
+    
     </div>
 </body>
 </html>
