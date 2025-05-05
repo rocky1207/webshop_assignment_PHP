@@ -5,6 +5,7 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 $page = $_GET['page'] ?? 'home';
 
+
 if($requestMethod === 'POST') {
     
     switch($page) {
@@ -42,6 +43,13 @@ if($requestMethod === 'GET') {
             break;
         case 'aboutUs':
             require './view/pages/aboutUs.php';
+            break;
+        case 'product':
+            if($isLoggedIn) {
+                require_once "./controllers/productController.php";
+            new ProductController();
+            require './view/pages/product/show.php';
+            }
             break;
         case 'home':
         default:
