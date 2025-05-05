@@ -2,9 +2,10 @@
 $products = $_SESSION['products'] ?? [];
 
 var_dump($_SESSION["user"] ?? []);
-
+var_dump($_SESSION["page"] ?? '');
 unset($_SESSION['products']);
 unset($_SESSION['user']);
+unset($_SESSION['page']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,7 @@ unset($_SESSION['user']);
                 <p>Description: <?= $product['opis'] ?></p>
                 <p>Price: <?= $product['cena'] ?></p>
                 <p>Quantity: <?= $product['kolicina'] ?></p>
+                <p><a href="http://localhost/ITMentorstva/vezbe/PHP-16_webshop_assignment/?page=product&id=<?= $product['id'] ?>">See more...</a></p>
             </li>
             <?php endforeach ?>
         </ul>
