@@ -32,7 +32,7 @@ $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
                 </li>
                 
                 <li>
-                    <a href="">Add product</a>
+                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=add-product">Add product</a>
                 </li>
                 <li>
                     <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logOut">Log Out</a>

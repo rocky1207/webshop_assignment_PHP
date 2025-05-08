@@ -7,7 +7,7 @@ class LogInController {
         $inputs = ['email' => $_POST['email'], 'password' => $_POST['password']];
         $regex = ['email' => AppController::EMAIL_REGEX, 'password' => AppController::PASSWORD_REGEX];
         $messages =  ['email' => AppController::EMAIL_ERROR_MESSAGE, 'password' => AppController::PASSWORD_ERROR_MESSAGE];
-        $data = AppController::validateInputs($inputs, $regex, $messages, "page=home");
+        $data = AppController::validateInputs($inputs, $regex, $messages, "page=logIn");
         
         if($data) {
             $execData = [
@@ -31,16 +31,13 @@ class LogInController {
         if($execData) {
             try {
                 $user = DatabaseModel::queryExec($execData);
-                $_SESSION["user"] = $user;
                 $user && $_SESSION["isLoggedIn"] = true;
-                $user && AppController::createMessage('Logovanje uspešno!', "page=products");
                 session_regenerate_id(true);
+                Header("Location: ?page=products");
             } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=logIn");
             }
         }
-        
-        
     }
 }
 

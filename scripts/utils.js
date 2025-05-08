@@ -11,13 +11,13 @@ export const addNewHeader = (elements) => {
 
     const menuBtn = document.querySelector('#menuBtn');
     const closeMenuBtn = document.querySelector('.closeMenuBtn');
-
+    
     if (closeMenuBtn) {
-        closeMenuBtn.addEventListener('click', addNewHeader.bind(null, headerOneCode));
+        closeMenuBtn.addEventListener('click', addNewHeader.bind(null, headerOneCode))
     }
 
     if (menuBtn) {
-        menuBtn.addEventListener('click', addNewHeader.bind(null, headerTwoCode));
+        menuBtn.addEventListener('click', addNewHeader.bind(null, headerTwoCode))
     }
 }
 

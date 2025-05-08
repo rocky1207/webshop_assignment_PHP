@@ -1,7 +1,7 @@
 <?php
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 $message = $_SESSION['errorMsg'] ?? [];
-var_dump($message);
+
 
 unset($_SESSION['errorMsg']);
 

@@ -5,7 +5,6 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 $page = $_GET['page'] ?? 'home';
 
-
 if($requestMethod === 'POST') {
     
     switch($page) {
@@ -19,6 +18,11 @@ if($requestMethod === 'POST') {
             $registerController = new RegisterController();
             $registerController->register();
             break;
+        case 'add-product':
+            require_once (__DIR__."/controllers/AddProductController.php");
+            $addProductController = new AddProductController();
+            $addProductController->createProduct();
+            break;
     }
 }
 
@@ -26,8 +30,8 @@ if($requestMethod === 'GET') {
      
     switch($page) {
         case 'products':
-            require_once "./controllers/ProductsController.php";
-            new ProductsController();
+            require_once "./controllers/GetProductsController.php";
+            new GetProductsController();
             require './view/pages/products.php';
             break;
         case 'logIn':
@@ -46,10 +50,13 @@ if($requestMethod === 'GET') {
             break;
         case 'product':
             if($isLoggedIn) {
-                require_once "./controllers/productController.php";
-            new ProductController();
+                require_once "./controllers/GetProductController.php";
+            new GetProductController();
             require './view/pages/product/show.php';
             }
+            break;
+        case 'add-product':
+            $isLoggedIn && require './view/pages/addProduct.php';
             break;
         case 'home':
         default:

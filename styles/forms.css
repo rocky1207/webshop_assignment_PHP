@@ -3,34 +3,33 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    transform: translateY(-20%);
+    height: 50vh;
 }
-form {
+.form {
     margin-bottom: 30px;
     width: 100%;
     max-width: 400px;
 }
-form div {
+.inputDiv {
     margin: 10px 0;
     
 }
 
-form div input {
+.inputDiv input {
     width: 100%;
     height: 30px;
     padding: 20px 20px;
     background: rgb(234, 234, 234);
 }
-form div button {
+.formButton {
     all: unset;
     border: 1px solid black;
     padding: 5px 10px;
     background: rgb(234, 234, 234);
     transition: background .2s ease-in-out;
 }
-form div button:hover,
-form div button:active {
+.formButton:hover,
+.formButton:active {
     cursor: pointer;
     background: rgb(247, 247, 247);
 }
