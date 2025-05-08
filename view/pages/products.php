@@ -1,11 +1,6 @@
 <?php 
 $products = $_SESSION['products'] ?? [];
-
-var_dump($_SESSION["user"] ?? []);
-var_dump($_SESSION["page"] ?? '');
 unset($_SESSION['products']);
-unset($_SESSION['user']);
-unset($_SESSION['page']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +18,7 @@ unset($_SESSION['page']);
     <?php include __DIR__."/../components/mainHeader.php" ?>
     <main class="textCenter">
         <h1>This is a list of all products we have</h1>
+        <?php if(!empty($products)): ?>
         <ul class="productList">
             <?php foreach($products as $product): ?>
             <li>
@@ -36,7 +32,11 @@ unset($_SESSION['page']);
                 <p><a href="http://localhost/ITMentorstva/vezbe/PHP-16_webshop_assignment/?page=product&id=<?= $product['id'] ?>">See more...</a></p>
             </li>
             <?php endforeach ?>
+            
         </ul>
+        <?php else: ?>
+            <p class="errorMessage">There is no any product in the list...</p>
+        <?php endif ?>
     </main>
 </body>
 </html>

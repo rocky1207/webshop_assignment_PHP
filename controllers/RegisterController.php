@@ -19,7 +19,7 @@ class RegisterController {
             "confirmPassword" => AppController::PASSWORD_ERROR_MESSAGE
         ];
         $data = AppController::validateInputs($inputs, $regex, $messages, "page=register");
-        
+        $_SESSION["data"] = $data;
         $data && $registerData = AppController::isPasswordEqual($data);
         
         if($registerData) {
@@ -43,9 +43,8 @@ class RegisterController {
 
         if($execData) {
             try {
-                $emailExist = DatabaseModel::queryExec($execData);
-                $_SESSION["emailExist"] = $emailExist;
-                $execData1 = [
+                DatabaseModel::queryExec($execData);
+                $execDataInsert = [
                     "data" => [
                         "email" => $registerData["email"],
                         "password" => password_hash($registerData["password"], PASSWORD_DEFAULT)
@@ -55,14 +54,14 @@ class RegisterController {
                     "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
                 ];
                 
-                $id = DatabaseModel::queryExec($execData1);
+                $id = DatabaseModel::queryExec($execDataInsert);
                 $_SESSION["id"] = $id;
             } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=register");
             }
             
         }
-        Header("Location: ?page=register");
+        AppController::createMessage("Uspešno ste se registrovali!", "page=logIn");
     }
 }
 ?>

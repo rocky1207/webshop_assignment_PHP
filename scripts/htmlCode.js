@@ -13,7 +13,7 @@ const getNavLinks = (loggedIn) => {
 
     if(loggedIn) {
         links = links.filter(li => li.label !== 'Log In'); 
-        links.push({href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products', label: 'Product list'},{href: '', label: 'Add product'},{href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logOut', label: 'Log Out'});
+        links.push({href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products', label: 'Product list'},{href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=add-product', label: 'Add product'},{href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logOut', label: 'Log Out'});
     }
     return links.map(liEl => `<li><a href='${liEl.href}'>${liEl.label}</a></li>`).join('');
 }

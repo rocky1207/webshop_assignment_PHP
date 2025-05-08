@@ -18,8 +18,7 @@
         <div class="product">
             <h1><?= $_SESSION["product"][0]["ime"] ?></h1>
             <p><?= $_SESSION["product"][0]["opis"] ?>, košta $<?= $_SESSION["product"][0]["cena"] ?>, a preostala količina je <?= $_SESSION["product"][0]["kolicina"] ?>.</p>
-            
-        </div>
+         </div>
     </main>
 </body>
 </html>

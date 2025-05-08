@@ -33,9 +33,11 @@
 
 /* headerTwo section */
 .headerTwo {
-    position: relative;
+    position: fixed;
     background: #b5b5b5;
+    overflow: hidden;
     height: 100vh;
+    width: 100%;
 }
 .containerSmall {
     width: 80%;
