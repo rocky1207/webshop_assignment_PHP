@@ -6,7 +6,7 @@ class GetProductsController {
 
     function __construct() {
          try {
-            DatabaseModel::connect();
+            AppController::databaseConnect();
             $this->products();
         } catch (Exception $e) {
              AppController::createMessage($e->getMessage(), "page=home");

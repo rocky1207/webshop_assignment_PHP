@@ -7,6 +7,7 @@ class AppController {
     public const TEXT_REGEX = "/^[\p{L}]+$/u";
     public const DESCRIPTION_REGEX = "/^.+$/";
     public const IMAGE_REGEX = "/^.+\.(jpg|jpeg|png|gif|bmp|webp)$/i";
+    public const PRODUCT_ID_REGEX = "/^(0|[1-9][0-9]*)$/";
 
     public const EMAIL_ERROR_MESSAGE = 'Email nije ispravan.';
     public const PASSWORD_ERROR_MESSAGE = 'Lozinka počinje velikim slovom, sadrži najmanje jednu cifru, dozvoljava slova i znak !, i ima minimalnu dužinu od 4 karaktera.';
@@ -14,6 +15,7 @@ class AppController {
     public const QUERY_ERROR_MESSAGE =  'Greška prilikom izvršenja upita';
     public const NO_PRODUCTS_MESSAGE =  'Nema rezultata za navedeni upit';
     public const EMAIL_EXISTS_MESSAGE =  'Email već postoji. Unesite drugi.';
+    public const PRODUCT_ID_ERROR_MESSAGE = "Prosleđeni ID proizvoda mora biti pozitivni broj";
 
     public const TEXT_ERROR_MESSAGE =  'Naziv mora biti popunjen samo slovnim karakterima.';
     public const DESCRIPTION_ERROR_MESSAGE =  'Polje opisa proizvoda mora biti popunjeno.';

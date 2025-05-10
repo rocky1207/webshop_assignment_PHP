@@ -1,5 +1,6 @@
 :root {
     --hover-color-one: #5b5b5b;
+    --overlay: rgba(0, 0, 0, 0.7);
 }
 *,
 *::after,

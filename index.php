@@ -23,6 +23,11 @@ if($requestMethod === 'POST') {
             $addProductController = new AddProductController();
             $addProductController->createProduct();
             break;
+        case 'delete-product':
+            require_once(__DIR__."/controllers/DeleteProductController.php");
+            $deleteProductController = new DeleteProductController();
+            $deleteProductController->deleteProduct();
+            break;
     }
 }
 
@@ -30,9 +35,11 @@ if($requestMethod === 'GET') {
      
     switch($page) {
         case 'products':
-            require_once "./controllers/GetProductsController.php";
-            new GetProductsController();
-            require './view/pages/products.php';
+            if($isLoggedIn) {
+                require_once "./controllers/GetProductsController.php";
+                new GetProductsController();
+                require './view/pages/products.php';
+            }
             break;
         case 'logIn':
             require './view/pages/logIn.php';
@@ -51,7 +58,7 @@ if($requestMethod === 'GET') {
         case 'product':
             if($isLoggedIn) {
                 require_once "./controllers/GetProductController.php";
-            new GetProductController();
+                new GetProductController();
             require './view/pages/product/show.php';
             }
             break;
