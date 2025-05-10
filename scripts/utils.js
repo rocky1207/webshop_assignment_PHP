@@ -48,3 +48,10 @@ export const handleResize = () => {
     }
     }
 }
+
+export const manageClass = (el, add, remove) => {
+    console.log(el, add, remove);
+    const element = document.querySelector(el);
+    element.classList.add(add);
+    element.classList.remove(remove);
+}

@@ -19,7 +19,6 @@ class RegisterController {
             "confirmPassword" => AppController::PASSWORD_ERROR_MESSAGE
         ];
         $data = AppController::validateInputs($inputs, $regex, $messages, "page=register");
-        $_SESSION["data"] = $data;
         $data && $registerData = AppController::isPasswordEqual($data);
         
         if($registerData) {
@@ -35,7 +34,8 @@ class RegisterController {
                 "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
             ];
             try {
-                DatabaseModel::connect();
+                //DatabaseModel::connect();
+                AppController::databaseConnect();
             } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=register");
             }
@@ -55,7 +55,7 @@ class RegisterController {
                 ];
                 
                 $id = DatabaseModel::queryExec($execDataInsert);
-                $_SESSION["id"] = $id;
+            //    $_SESSION["id"] = $id;
             } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=register");
             }

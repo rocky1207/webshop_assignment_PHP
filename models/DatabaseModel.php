@@ -39,7 +39,6 @@ class DatabaseModel {
                             self::$pdo->rollBack();
                             throw new Exception($execData["errorMsgOne"]);
                         }
-                        
                     }  
                     if(empty($data)) {
                         self::$pdo->rollBack();

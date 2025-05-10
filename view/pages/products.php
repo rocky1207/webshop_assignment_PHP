@@ -1,6 +1,10 @@
 <?php 
 $products = $_SESSION['products'] ?? [];
+var_dump($_SESSION["productId"] ?? '');
+var_dump($_SESSION["data"] ?? '');
 unset($_SESSION['products']);
+unset($_SESSION['productId']);
+unset($_SESSION["data"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,18 @@ unset($_SESSION['products']);
     <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
 </head>
 <body>
+    <div class="overlay hidden">
+        <form method="POST" action="?page=delete-product" action class="overlayContent">
+            <input type="hidden" name="id" value="">>
+            <p>Are You sure??</p>
+            <div class="overlayButtonDiv">
+                <button type="submit">Yes</button>
+                <button type="button">No</button>
+            </div>
+        </form>
+    </div>
     <?php include __DIR__."/../components/mainHeader.php" ?>
+    
     <main class="textCenter">
         <h1>This is a list of all products we have</h1>
         <?php if(!empty($products)): ?>
@@ -30,6 +45,9 @@ unset($_SESSION['products']);
                 <p>Price: <?= $product['cena'] ?></p>
                 <p>Quantity: <?= $product['kolicina'] ?></p>
                 <p><a href="http://localhost/ITMentorstva/vezbe/PHP-16_webshop_assignment/?page=product&id=<?= $product['id'] ?>">See more...</a></p>
+                <div class="productButtonDiv">
+                    <button type="button" data-id=<?= $product["id"] ?>>DELETE</button>
+                </div>
             </li>
             <?php endforeach ?>
             
