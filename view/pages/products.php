@@ -1,7 +1,10 @@
 <?php 
 $products = $_SESSION['products'] ?? [];
+var_dump($_SESSION["params"] ?? []);
 var_dump($_SESSION["productId"] ?? '');
 var_dump($_SESSION["data"] ?? '');
+var_dump($products);
+unset($_SESSION["params"]);
 unset($_SESSION['products']);
 unset($_SESSION['productId']);
 unset($_SESSION["data"]);
@@ -15,6 +18,7 @@ unset($_SESSION["data"]);
     <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/mainHeader.css">
     <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/globals.css">
     <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/products.css">
+    <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/forms.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
 </head>
@@ -33,6 +37,11 @@ unset($_SESSION["data"]);
     
     <main class="textCenter">
         <h1>This is a list of all products we have</h1>
+        <form id="searchForm" class="form center" action="?page=search-product">
+            <div class="inputDiv searchInputDiv">
+            <input id="searchInput" type="text" name="search" placeholder="Search product" value="">
+        </div>
+        </form>
         <?php if(!empty($products)): ?>
         <ul class="productList">
             <?php foreach($products as $product): ?>

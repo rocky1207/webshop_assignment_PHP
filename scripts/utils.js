@@ -55,3 +55,22 @@ export const manageClass = (el, add, remove) => {
     element.classList.add(add);
     element.classList.remove(remove);
 }
+
+export const createLiItem = (product) => {
+    const li = `
+      <li>
+          <h2>Product name: ${product.ime}</h2>
+          <div>
+              <img src="" alt="${product.ime}">
+          </div>
+          <p>Description: ${product.opis}</p>
+          <p>Price: ${product.cena}</p>
+          <p>Quantity: ${product.kolicina}</p>
+          <p><a href="http://localhost/ITMentorstva/vezbe/PHP-16_webshop_assignment/?page=product&id=${product.id}">See more...</a></p>
+          <div class="productButtonDiv">
+              <button type="button" data-id="${product.id}">DELETE</button>
+          </div>
+      </li>
+    `;
+    return li;
+}

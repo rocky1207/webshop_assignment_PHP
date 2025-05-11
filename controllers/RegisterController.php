@@ -24,8 +24,8 @@ class RegisterController {
         if($registerData) {
             $execData = [
                 "checkType" => "emailExist",
+                "keys" => ["email"],
                 "data" => [
-                    "key" => "email",
                     "email" => $registerData["email"],
                 ],
                 "query" => "SELECT * FROM korisnici WHERE email = :email",
@@ -34,7 +34,6 @@ class RegisterController {
                 "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
             ];
             try {
-                //DatabaseModel::connect();
                 AppController::databaseConnect();
             } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=register");
@@ -54,8 +53,7 @@ class RegisterController {
                     "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
                 ];
                 
-                $id = DatabaseModel::queryExec($execDataInsert);
-            //    $_SESSION["id"] = $id;
+                DatabaseModel::queryExec($execDataInsert);
             } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=register");
             }

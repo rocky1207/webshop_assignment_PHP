@@ -13,8 +13,8 @@ class DeleteProductController {
             $_SESSION["productId"] = $productId;
             $execData = [
                 "query" => "SELECT * FROM proizvodi WHERE id = :id",
+                "keys" => ["id"],
                 "data" => [
-                    "key" => "id",
                     "id" => $productId
                 ],
                 "errorMsgOne" => "Proizvod ne postoji u bazi podataka.",
@@ -27,7 +27,6 @@ class DeleteProductController {
             }
             $productsModel = new ProductsModel();
             $data = $productsModel->productQueryExecutor($execData);
-            $_SESSION["data"] = $data;
             if(!empty($data)) {
                 $execDataDelete = [
                 "query" => "DELETE FROM proizvodi WHERE id = :id",

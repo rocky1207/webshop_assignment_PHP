@@ -21,11 +21,7 @@ class GetProductsController {
         ];
         $this->productsModel = new ProductsModel();
         $products = $this->productsModel->productQueryExecutor($execData);
-        //if(is_string($products)) {
-         //   AppController::createMessage($products, "page=products");
-       // } else {
-            $_SESSION['products'] = $products;
-       // }
+        $_SESSION['products'] = $products;
     }
 }
 

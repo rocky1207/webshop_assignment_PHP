@@ -65,6 +65,14 @@ if($requestMethod === 'GET') {
         case 'add-product':
             $isLoggedIn && require './view/pages/addProduct.php';
             break;
+        case 'search-product':
+        if($isLoggedIn)  {
+            require_once "./controllers/SearchProductController.php";
+            $searchProductController = new SearchProductController();
+            $searchProductController->searchProduct();
+            require './view/pages/products.php';
+        break;
+        } 
         case 'home':
         default:
             require './view/pages/home.php';
