@@ -14,43 +14,60 @@ class DatabaseModel {
 
     public static function queryExec($execData) {
         $queryType = strtoupper(strtok(trim($execData["query"])," "));
-        $key = $execData["data"]["key"] ?? "";
+        $keys = $execData["keys"] ?? [];
+        $_SESSION["keys"] = $keys;
         $checkType = $execData["checkType"] ?? '';
         if(isset($execData["data"]) && $queryType === "SELECT") {
-            $params =  [$key => $execData["data"][$key]] ?? null;
+            foreach ($keys as $key) {
+                $params[$key] = $execData["data"][$key];
+            }
+            
         } else {
             $params = $execData["data"] ?? [];
         }
-        
+        $_SESSION["params"] = $params ?? null;
         try {
             self::$pdo->beginTransaction();
             $stmt =  self::$pdo->prepare($execData["query"]);
+            
             $stmt->execute($params);
             switch($queryType) {
                 
                 case "SELECT":
-                    $data = $stmt->fetchAll();
+                    $datas = $stmt->fetchAll();
                     if ($checkType === "emailExist") {
-                        if(empty($data)) {
+                        if(empty($datas)) {
                             self::$pdo->commit();
-                            return $data;
+                            return $datas;
                         }
-                        if(count($data) > 0) {
+                        if(count($datas) > 0) {
                             self::$pdo->rollBack();
                             throw new Exception($execData["errorMsgOne"]);
                         }
                     }  
-                    if(empty($data)) {
+                    if(empty($datas)) {
                         self::$pdo->rollBack();
                         throw new Exception($execData["errorMsgOne"]);
                     }
-                    if(count($data) > 0) {
-                        if(isset($data[0]["lozinka"]) && count($data) === 1) {
-                            $passwordVerify = password_verify($execData["data"]["password"], $data[0]["lozinka"]);
+                    if(count($datas) > 0) {
+                        if(isset($datas[0]["lozinka"]) && count($datas) === 1) {
+                            $passwordVerify = password_verify($execData["data"]["password"], $datas[0]["lozinka"]);
                             !$passwordVerify && throw new Exception($execData["errorMsgTwo"]);
                         }
                         self::$pdo->commit();
-                        return $data;
+                        $result = [];
+
+                        foreach ($datas as $data) {
+                            $item = [];
+
+                            foreach ($data as $key => $value) {
+                                $item[$key] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                            }
+
+                            $result[] = $item;
+                        }
+
+                        return $result;
                     }
                     break;
                 case "INSERT":

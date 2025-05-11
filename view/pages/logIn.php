@@ -1,7 +1,10 @@
 <?php
     $message = $_SESSION['message'] ?? '';
-    
+    var_dump($_SESSION["key"] ?? []);
+    var_dump($_SESSION["params"] ?? []);
     unset($_SESSION['message']);
+    unset($_SESSION["params"]);
+    unset($_SESSION["key"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">

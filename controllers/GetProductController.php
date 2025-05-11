@@ -17,8 +17,8 @@ class GetProductController {
     public function product() {
         $execData = [
             "query" => "SELECT * from proizvodi WHERE id = :id",
+            "keys" => ["id"],
             "data" => [
-                "key" => "id",
                 "id" => $this->productId
             ],
             "errorMsgOne" => "Trenutno nije moguće izvršiti upit. Pokušajte kasnije.",

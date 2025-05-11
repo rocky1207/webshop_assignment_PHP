@@ -11,8 +11,8 @@ class LogInController {
         
         if($data) {
             $execData = [
+                "keys" => ["email"],
                 "data" => [
-                    "key" => "email",
                     "email" => $data["email"],
                     "password" => $data["password"]
                 ],
