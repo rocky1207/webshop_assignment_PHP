@@ -4,18 +4,14 @@ require_once(__DIR__."/../models/ProductsModel.php");
 class SearchProductController {
     public function searchProduct() {
         $inputs = ["search" => $_GET["search"]];
-        $regex = ["search" => AppController::DESCRIPTION_REGEX];
+        $regex = ["search" => AppController::SEARCH_REGEX];
         $messages = ["search" => ''];
         $data = AppController::validateInputs($inputs, $regex, $messages, "?page=products");
-        $_SESSION["data"] = $data;
-
+        
         if(!empty($data)) {
             try {
                 AppController::databaseConnect();
-            } catch(Exception $e) {
-                AppController::createMessage($e->getMessage(), "?page=products");
-            }
-            $execData = [ 
+                $execData = [ 
                 "query" => "SELECT * FROM proizvodi WHERE ime LIKE :name 
                 OR opis LIKE :description 
                 OR cena LIKE :price 
@@ -30,9 +26,12 @@ class SearchProductController {
                 "errorMsgOne" => AppController::NO_PRODUCTS_MESSAGE,
                 "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
             ];
-            if($execData) {
+            if(isset($execData)) {
                 $productsModel = new ProductsModel();
                 $products = $productsModel->productQueryExecutor($execData);
+            }
+            } catch(Exception $e) {
+                AppController::createMessage($e->getMessage(), "page=products");
             }
         }
 

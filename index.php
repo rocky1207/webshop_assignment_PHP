@@ -4,6 +4,8 @@ session_start();
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 $page = $_GET['page'] ?? 'home';
+$message = $_SESSION["message"] ?? '';
+
 
 if($requestMethod === 'POST') {
     
@@ -28,6 +30,11 @@ if($requestMethod === 'POST') {
             $deleteProductController = new DeleteProductController();
             $deleteProductController->deleteProduct();
             break;
+        case 'update-product':
+        require_once(__DIR__."/controllers/UpdateProductController.php");
+            $updateProductController = new UpdateProductController();
+            $updateProductController->updateProduct();
+        break;
     }
 }
 
@@ -37,17 +44,20 @@ if($requestMethod === 'GET') {
         case 'products':
             if($isLoggedIn) {
                 require_once "./controllers/GetProductsController.php";
-                new GetProductsController();
+                $getProductsController = new GetProductsController();
+                $getProductsController->getProducts();
                 require './view/pages/products.php';
             }
             break;
         case 'logIn':
-            require './view/pages/logIn.php';
+            !$isLoggedIn && require './view/pages/logIn.php';
             break;
         case 'logOut':
-            require_once "./controllers/LogOutController.php";
-            $logOutController = new LogOutController();
-            $logOutController->logOut();
+            if($isLoggedIn) {
+                require_once "./controllers/LogOutController.php";
+                $logOutController = new LogOutController();
+                $logOutController->logOut();
+            }
             break;
         case 'register':
             require './view/pages/register.php';
@@ -57,8 +67,11 @@ if($requestMethod === 'GET') {
             break;
         case 'product':
             if($isLoggedIn) {
-                require_once "./controllers/GetProductController.php";
-                new GetProductController();
+                if(!$message) {
+                    require_once "./controllers/GetProductController.php";
+                    $getProductController = new GetProductController();
+                    $getProductController->getProduct("page=product");
+                }
             require './view/pages/product/show.php';
             }
             break;
@@ -72,13 +85,20 @@ if($requestMethod === 'GET') {
             $searchProductController->searchProduct();
             require './view/pages/products.php';
         break;
+        }
+        case 'update-product':
+        if($isLoggedIn)  {
+            if(!$message) {
+            require_once "./controllers/GetProductController.php";
+            $getProductController = new GetProductController();
+            $getProductController->getProduct("page=update-product");
+            }
+            require './view/pages/product/update.php';
+        break;
         } 
         case 'home':
         default:
             require './view/pages/home.php';
     }
 }
-
-
-
 ?>

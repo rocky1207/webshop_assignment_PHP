@@ -1,10 +1,5 @@
 <?php
-$isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
-$message = $_SESSION['errorMsg'] ?? [];
-
-
-unset($_SESSION['errorMsg']);
-
+    $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +25,5 @@ unset($_SESSION['errorMsg']);
             <p>Enjoy!</p>
         </div>
     </main>
-    
 </body>
 </html>

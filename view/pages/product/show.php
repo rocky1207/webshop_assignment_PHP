@@ -1,3 +1,9 @@
+<?php
+    $message = $_SESSION["message"] ?? '';
+    $product = $_SESSION["product"][0] ?? [];
+    unset($_SESSION["message"]);
+    unset($_SESSION["product"]);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +17,19 @@
     <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
 </head>
 <body>
-    <?php
-        include __DIR__."/../../components/mainHeader.php";
-    ?>
+    <?php include __DIR__."/../../components/mainHeader.php" ?>
     <main class="textCenter">
+        <?php if(!$message): ?>
         <div class="product">
-            <h1><?= $_SESSION["product"][0]["ime"] ?></h1>
-            <p><?= $_SESSION["product"][0]["opis"] ?>, košta $<?= $_SESSION["product"][0]["cena"] ?>, a preostala količina je <?= $_SESSION["product"][0]["kolicina"] ?>.</p>
-         </div>
+            <h1><?= $product["ime"] ?></h1>
+            <p><?= $product["opis"] ?>, košta $<?= $product["cena"] ?>, a preostala količina je <?= $product["kolicina"] ?>.</p>
+        </div>
+        <div>
+            <a href="index.php?page=update-product&id=<?= $product['id'] ?>" class="button-like">UPDATE</a>
+        </div>
+        <?php else: ?>
+            <p class="errorMessage"><?= $message ?></p>
+        <?php endif ?>
     </main>
 </body>
 </html>

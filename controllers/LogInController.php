@@ -9,7 +9,7 @@ class LogInController {
         $messages =  ['email' => AppController::EMAIL_ERROR_MESSAGE, 'password' => AppController::PASSWORD_ERROR_MESSAGE];
         $data = AppController::validateInputs($inputs, $regex, $messages, "page=logIn");
         
-        if($data) {
+        if(!empty($data)) {
             $execData = [
                 "keys" => ["email"],
                 "data" => [
@@ -23,21 +23,18 @@ class LogInController {
             ];
             try {
                 AppController::databaseConnect();
+                if(isset($execData)) {
+                    $user = DatabaseModel::queryExec($execData);
+                    $user && $_SESSION["isLoggedIn"] = true;
+                    session_regenerate_id(true);
+                    Header("Location: ?page=products");
+                }
             } catch(Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=logIn");
             }
         }
         
-        if($execData) {
-            try {
-                $user = DatabaseModel::queryExec($execData);
-                $user && $_SESSION["isLoggedIn"] = true;
-                session_regenerate_id(true);
-                Header("Location: ?page=products");
-            } catch (Exception $e) {
-                AppController::createMessage($e->getMessage(), "page=logIn");
-            }
-        }
+        
     }
 }
 

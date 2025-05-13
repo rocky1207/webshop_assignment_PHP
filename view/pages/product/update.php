@@ -1,5 +1,6 @@
 <?php
     $message = $_SESSION['message'] ?? '';
+    $product = $_SESSION['product'] ?? [];
     unset($_SESSION['message']);
 ?>
 <!DOCTYPE html>
@@ -7,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>Update product</title>
     <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/mainHeader.css">
     <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/globals.css">
     <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/products.css">
@@ -16,23 +17,23 @@
     <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
 </head>
 <body>
-    <?php include __DIR__."/../components/mainHeader.php" ?>
+    <?php include __DIR__."/../../components/mainHeader.php" ?>
     <div class="containerLg formWrappDiv">
-    <form action="?page=add-product" method="POST" class="form">
+    <form action="?page=update-product&id=<?=$product[0]['id'] ?? '' ?>" method="POST" class="form">
         <div class="inputDiv">
-            <input type="text" name="product" placeholder="Product name">
+            <input type="text" name="product" placeholder="Product name" value="<?= $product[0]["ime"] ?? '' ?>">
         </div>
         <div class="inputDiv">
-            <input type="text" name="description" placeholder="Descrition">
+            <input type="text" name="description" placeholder="Descrition" value="<?= $product[0]["opis"] ?? '' ?>">
         </div>
         <div class="inputDiv">
-            <input type="text" name="price" placeholder="Price">
+            <input type="text" name="price" placeholder="Price" value="<?= $product[0]["cena"] ?? '' ?>">
         </div>
         <div class="inputDiv">
-            <input type="text" name="image" placeholder="Image">
+            <input type="text" name="image" placeholder="Image" value="<?= $product[0]["slika"] ?? '' ?>">
         </div>
         <div class="inputDiv">
-            <input type="text" name="quantity" placeholder="Quantity">
+            <input type="text" name="quantity" placeholder="Quantity" value="<?= $product[0]["kolicina"] ?? '' ?>">
         </div>
         <div class="formButton">
             <button type="submit">Send</button>

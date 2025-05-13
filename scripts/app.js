@@ -8,8 +8,6 @@ menuBtn.addEventListener('click', addNewHeader.bind(null, headerTwoCode));
 window.addEventListener('resize', handleResize);
 handleResize();
 
-
-
 if(isLoggedIn) {
   const productList = document.querySelector(".productList");
 const searchInput = document.getElementById("searchInput");

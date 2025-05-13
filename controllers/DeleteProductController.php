@@ -10,7 +10,6 @@ class DeleteProductController {
         $id = AppController::validateInputs($inputs, $regex, $messages, "page=products");
         if(!empty($id)) {
             $productId = (int)$id["productId"];
-            $_SESSION["productId"] = $productId;
             $execData = [
                 "query" => "SELECT * FROM proizvodi WHERE id = :id",
                 "keys" => ["id"],
@@ -22,25 +21,22 @@ class DeleteProductController {
             ];
             try {
                 AppController::databaseConnect();
-            } catch (Exception $e) {
-                AppController::createMessage($e->getMessage(), "page=home");
-            }
-            $productsModel = new ProductsModel();
-            $data = $productsModel->productQueryExecutor($execData);
-            if(!empty($data)) {
+                $productsModel = new ProductsModel();
+                $data = $productsModel->productQueryExecutor($execData);
+                if(!empty($data)) {
                 $execDataDelete = [
                 "query" => "DELETE FROM proizvodi WHERE id = :id",
-                "data" => [
-                    "id" => $productId
-                ],
+                "data" => ["id" => $productId],
                 "errorMsgOne" => "Proizvod trenutno nije moguće obrisati.",
                 "erroreMsgThree" => AppController::QUERY_ERROR_MESSAGE
             ];
             $productsModel->productQueryExecutor($execDataDelete);
+            Header("Location: ?page=products");
+            }
+            } catch (Exception $e) {
+                AppController::createMessage($e->getMessage(), "page=products");
             }
         }
-        
-        Header("Location: ?page=products");
     }
 }
 ?>
