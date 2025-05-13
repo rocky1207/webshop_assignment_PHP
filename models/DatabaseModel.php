@@ -21,7 +21,6 @@ class DatabaseModel {
             foreach ($keys as $key) {
                 $params[$key] = $execData["data"][$key];
             }
-            
         } else {
             $params = $execData["data"] ?? [];
         }
@@ -59,14 +58,11 @@ class DatabaseModel {
 
                         foreach ($datas as $data) {
                             $item = [];
-
                             foreach ($data as $key => $value) {
                                 $item[$key] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
                             }
-
                             $result[] = $item;
                         }
-
                         return $result;
                     }
                     break;

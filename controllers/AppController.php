@@ -4,8 +4,9 @@ class AppController {
     public const EMAIL_REGEX = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     public const PASSWORD_REGEX = "/^(?=\p{Lu})(?=.*\d)[\p{L}\d!]{4,}$/u";
     public const NUMBER_REGEX = "/^\d+$/";
-    public const TEXT_REGEX = "/^[\p{L}]+$/u";
+    public const TEXT_REGEX =  "/^[\p{L}]+$/u";
     public const DESCRIPTION_REGEX = "/^.+$/";
+    public const SEARCH_REGEX = "/^.*$/";
     public const IMAGE_REGEX = "/^.+\.(jpg|jpeg|png|gif|bmp|webp)$/i";
     public const PRODUCT_ID_REGEX = "/^(0|[1-9][0-9]*)$/";
 
@@ -30,16 +31,17 @@ class AppController {
         }
     }
     public static function createMessage($message, $page) {
-        $_SESSION['message'] = $message;
+         $_SESSION['message'] = $message;
         Header("Location: ?{$page}", true, 303);
         exit();
+        return;
     }
     public static function validateInputs($inputs, $regex, $messages, $page) {
         $data = [];
          foreach($inputs as $key => $input) {
             ${$key} = isset($input) ? trim($input) : '';
-            !preg_match($regex[$key], ${$key}) && self::createMessage($messages[$key], $page);
-            $data[$key] = ${$key};
+           !preg_match($regex[$key], ${$key}) && self::createMessage($messages[$key], $page);
+           $data[$key] = ${$key};
         }
          return $data;
     }

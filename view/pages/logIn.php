@@ -1,10 +1,6 @@
 <?php
     $message = $_SESSION['message'] ?? '';
-    var_dump($_SESSION["key"] ?? []);
-    var_dump($_SESSION["params"] ?? []);
     unset($_SESSION['message']);
-    unset($_SESSION["params"]);
-    unset($_SESSION["key"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +32,7 @@
         
     </form>
     <?php if($message): ?>
-            <p class="errorMessage"><?= $message ?></p>
+        <p class="errorMessage"><?= $message ?></p>
     <?php endif ?>
     <p>You don't have an account? <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=register">Register</a></p>
     

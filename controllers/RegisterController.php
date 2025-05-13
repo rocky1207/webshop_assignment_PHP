@@ -21,7 +21,7 @@ class RegisterController {
         $data = AppController::validateInputs($inputs, $regex, $messages, "page=register");
         $data && $registerData = AppController::isPasswordEqual($data);
         
-        if($registerData) {
+        if(!empty($registerData)) {
             $execData = [
                 "checkType" => "emailExist",
                 "keys" => ["email"],
@@ -35,31 +35,24 @@ class RegisterController {
             ];
             try {
                 AppController::databaseConnect();
-            } catch (Exception $e) {
+                if(isset($execData)) {
+                    DatabaseModel::queryExec($execData);
+                    $execDataInsert = [
+                        "query" => "INSERT INTO korisnici (email, lozinka) VALUES (:email, :password)",
+                        "data" => [
+                            "email" => $registerData["email"],
+                            "password" => password_hash($registerData["password"], PASSWORD_DEFAULT)
+                        ],
+                        "errorMsgOne" => "Trenutno nije moguće izvršiti upit. Pokušajte kasnije.",
+                        "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
+                    ];
+                    DatabaseModel::queryExec($execDataInsert);
+            } 
+        } catch (Exception $e) {
                 AppController::createMessage($e->getMessage(), "page=register");
             }
-        }
-
-        if($execData) {
-            try {
-                DatabaseModel::queryExec($execData);
-                $execDataInsert = [
-                    "data" => [
-                        "email" => $registerData["email"],
-                        "password" => password_hash($registerData["password"], PASSWORD_DEFAULT)
-                    ],
-                    "query" => "INSERT INTO korisnici (email, lozinka) VALUES (:email, :password)",
-                    "errorMsgOne" => "Trenutno nije moguće izvršiti upit. Pokušajte kasnije.",
-                    "errorMsgThree" => AppController::QUERY_ERROR_MESSAGE
-                ];
-                
-                DatabaseModel::queryExec($execDataInsert);
-            } catch (Exception $e) {
-                AppController::createMessage($e->getMessage(), "page=register");
-            }
-            
         }
         AppController::createMessage("Uspešno ste se registrovali!", "page=logIn");
     }
 }
-?>
+?> 

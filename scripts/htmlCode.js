@@ -5,10 +5,6 @@ const getNavLinks = (loggedIn) => {
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/', label: 'Welcome'},
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=aboutUs', label: 'About us'},
         {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logIn', label: 'Log In'}
-       /* {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/', label: 'Welcome'},
-        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/aboutUs.php', label: 'About us'},
-        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/products.php', label: 'Product list'},
-        {href: '/ITMentorstva/vezbe/PHP-16_webshop_assignment/view/pages/logIn.php', label: 'Log In'}*/
     ];
 
     if(loggedIn) {

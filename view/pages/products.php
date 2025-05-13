@@ -1,13 +1,10 @@
 <?php 
 $products = $_SESSION['products'] ?? [];
-var_dump($_SESSION["params"] ?? []);
-var_dump($_SESSION["productId"] ?? '');
-var_dump($_SESSION["data"] ?? '');
-var_dump($products);
-unset($_SESSION["params"]);
+$message = $_SESSION["message"] ?? '';
+
 unset($_SESSION['products']);
-unset($_SESSION['productId']);
-unset($_SESSION["data"]);
+unset($_SESSION['message']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +39,7 @@ unset($_SESSION["data"]);
             <input id="searchInput" type="text" name="search" placeholder="Search product" value="">
         </div>
         </form>
+        <?php if(!$message): ?>
         <?php if(!empty($products)): ?>
         <ul class="productList">
             <?php foreach($products as $product): ?>
@@ -63,6 +61,9 @@ unset($_SESSION["data"]);
         </ul>
         <?php else: ?>
             <p class="errorMessage">There is no any product in the list...</p>
+        <?php endif ?>
+        <?php else: ?>
+            <p class="errorMessage"><?= $message ?></p>
         <?php endif ?>
     </main>
 </body>
