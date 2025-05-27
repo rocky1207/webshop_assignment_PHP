@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/mainHeader.css">
-    <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/globals.css">
-    <link rel="stylesheet" href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/styles/forms.css">
+    <link rel="stylesheet" href="../../styles/mainHeader.css">
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../../styles/forms.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="/ITMentorstva/vezbe/PHP-16_webshop_assignment/scripts/app.js" defer type="module"></script>
+    <script src="../../scripts/app.js" defer type="module"></script>
 </head>
 <body>
     <?php
@@ -36,7 +36,7 @@
     <?php if($message): ?>
             <p class="errorMessage"><?= $message ?></p>
     <?php endif ?>
-    <p>Allready have an account? <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logIn">Login</a></p>
+    <p>Allready have an account? <a href="?page=logIn">Login</a></p>
     </div>
 </body>
 </html>

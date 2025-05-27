@@ -53,7 +53,7 @@ const searchInput = document.getElementById("searchInput");
     newProductBtns.forEach((btn) => {
         btn.addEventListener("click", newDeleteBtnActions.bind(null, btn))});
   }).catch((err) => {
-      console.error("Error fetching products:", err);
+    console.error(err);
     });
  });
   

@@ -21,26 +21,26 @@ $isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
             <ul>
                 
                 <li>
-                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment/">Welcome</a>
+                    <a href="/">Welcome</a>
                 </li>
                 <li>
-                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=aboutUs">About us</a>
+                    <a href="?page=aboutUs">About us</a>
                 </li>
                 <?php if($isLoggedIn):?>
                 <li>
-                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=products">Product list</a>
+                    <a href="?page=products">Product list</a>
                 </li>
                 
                 <li>
-                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=add-product">Add product</a>
+                    <a href="?page=add-product">Add product</a>
                 </li>
                 <li>
-                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logOut">Log Out</a>
+                    <a href="?page=logOut">Log Out</a>
                 </li>
                 <?php endif?>
                 <?php if(!$isLoggedIn):?>
                 <li>
-                    <a href="/ITMentorstva/vezbe/PHP-16_webshop_assignment?page=logIn">Log In</a>
+                    <a href="?page=logIn">Log In</a>
                 </li>
                 <?php endif?>
             </ul>

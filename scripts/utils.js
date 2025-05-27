@@ -66,7 +66,7 @@ export const createLiItem = (product) => {
           <p>Description: ${product.opis}</p>
           <p>Price: ${product.cena}</p>
           <p>Quantity: ${product.kolicina}</p>
-          <p><a href="http://localhost/ITMentorstva/vezbe/PHP-16_webshop_assignment/?page=product&id=${product.id}">See more...</a></p>
+          <p><a href="?page=product&id=${product.id}">See more...</a></p>
           <div class="productButtonDiv">
               <button type="button" data-id="${product.id}">DELETE</button>
           </div>
